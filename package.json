@@ -1,0 +1,25 @@
+{
+  "name": "audio-download-btn",
+  "version": "1.0.0",
+  "description": "mp3 download button for youtube and bilibili",
+  "main": "src/index.js",
+  "scripts": {
+    "clean": "rmdir /S /Q dist",
+    "build": "rollup -c",
+    "rebuild": "npm run clean && npm run build"
+  },
+  "author": "eric lam",
+  "license": "ISC",
+  "dependencies": {
+    "ffmpeg": "0.0.4",
+    "jquery": "^3.5.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.13.0",
+    "eslint-plugin-mozilla": "^2.8.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-copy": "^3.3.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^7.0.2"
+  }
+}
