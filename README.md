@@ -13,9 +13,9 @@ same as [here](https://github.com/eric2788/Bilibili-Vup-Stream-Details#installat
 
 ### Bilibili
 
-![bilibili](https/i.gyazo.com/d0ec8e629290375a615e869b813c6dd6.gif)
+![bilibili](https://i.gyazo.com/d0ec8e629290375a615e869b813c6dd6.gif)
 
-[破圖看這裏](https/i.gyazo.com/d0ec8e629290375a615e869b813c6dd6.gif)
+[破圖看這裏](https://i.gyazo.com/d0ec8e629290375a615e869b813c6dd6.gif)
 
 
 ### Youtube
