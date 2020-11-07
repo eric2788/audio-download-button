@@ -7,14 +7,14 @@ bilibili 和 youtube 的音頻下載按鈕
 ## Installation 下載
 
 跟這裏 [一樣](https://github.com/eric2788/Bilibili-Vup-Stream-Details#installation)
+
 same as [here](https://github.com/eric2788/Bilibili-Vup-Stream-Details#installation)
 
 ## Showcase 演示
 
 ### Bilibili
 
-![bilibili](https://i.gyazo.com/d0ec8e629290375a615e869b813c6dd6.gif)
-
+![bilibili](https://cdn.discordapp.com/attachments/415882741092057088/774593453459767296/ezgif.com-resize1.gif)
 
 ### Youtube
 
