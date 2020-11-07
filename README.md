@@ -13,7 +13,7 @@ same as [here](https://github.com/eric2788/Bilibili-Vup-Stream-Details#installat
 
 ### Bilibili
 
-![bilibili](https://images-ext-1.discordapp.net/external/PGzaC8VEcY93BQ5Jd69CvuKeRR6xcxBRr-YZ9xtbuX0/https/i.gyazo.com/d0ec8e629290375a615e869b813c6dd6.gif)
+![bili](https/i.gyazo.com/d0ec8e629290375a615e869b813c6dd6.gif)
 
 
 ### Youtube
