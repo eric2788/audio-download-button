@@ -1,10 +1,9 @@
 import $ from 'jquery'
 import download from './utils'
 
-const regVid = /https:\/\/www\.youtube\.com\/watch\?v=(?<id>\w+)/
+const regVid = /https:\/\/www\.youtube\.com\/watch\?v=(?<id>[^&]+)/g
 
 const mp3Api = 'https://ytapivmp3.com/api/button/mp3/'
-
 
 async function downloadMp3(){
     const vid = regVid.exec(location.href).groups?.id
