@@ -14,7 +14,7 @@ same as [here](https://github.com/eric2788/Bilibili-Vup-Stream-Details#installat
 
 ### Bilibili
 
-![bilibili](https://cdn.discordapp.com/attachments/415882741092057088/774593023325634570/ezgif.com-resize.gif)
+![bilibili](https://cdn.discordapp.com/attachments/415882741092057088/774593453459767296/ezgif.com-resize1.gif)
 
 ### Youtube
 
