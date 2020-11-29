@@ -7,7 +7,7 @@ async function download({audio_url, title, format}){
     const filename = `${title}.${format}`;
     a.href = url;
     a.download = filename;
-    a.click();
+    a.click()
     window.URL.revokeObjectURL(url);
 }
 

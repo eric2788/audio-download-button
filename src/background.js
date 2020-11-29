@@ -1,3 +1,5 @@
+import browser from 'webextension-polyfill'
+
 const audioMap = {
     lock: false,
     map: {},
@@ -58,15 +60,31 @@ async function isAudio(url){
 }
 
 function sendNotify(req){
+    console.log('sending notification')
     return browser.notifications.create({
         type: 'basic',
         ...req
     })
 }
 
+function createTab(data){
+    console.log('opening tab')
+    return browser.tabs.create(data)
+}
+
 browser.runtime.onMessage.addListener((req, ) => {
     console.log('receive message: '+JSON.stringify(req))
-    sendNotify(req)
+    switch(req.command){
+        case "notify":
+            sendNotify(req.data)
+            break;
+        case "tab":
+            createTab(req.data)
+            break;
+        default:
+            console.debug(`unknown command ${req.command}`)
+            break;    
+    }
 })
 
 browser.webRequest.onSendHeaders.addListener(

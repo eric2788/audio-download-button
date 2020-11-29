@@ -13,7 +13,8 @@ const ext = {
     copy({
         targets: [
             { src: 'src/manifest.json', dest: 'dist'},
-            { src: 'src/icons/*', dest: 'dist/icons'}
+            { src: 'src/icons/*', dest: 'dist/icons'},
+            { src: 'node_modules/webextension-polyfill/dist/browser-polyfill.js', dest: 'dist'}
         ]
     }),
     terser()

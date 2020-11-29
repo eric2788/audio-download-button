@@ -30,7 +30,6 @@ function assignButton(){
     $('#download-m4a').on('click', e => {
         e.currentTarget.innerText = '下載中...'
         if(blLoading){
-            console.debug('downloading...')
             return
         }
         blLoading = true
@@ -40,8 +39,11 @@ function assignButton(){
         })
     })
     browser.runtime.sendMessage({
-        title: '音頻按鈕已出現在視頻下方。',
-        message: '按下按鈕即可進行音頻下載。'
+        command: 'notify',
+        data: {
+            title: '音頻按鈕已出現在視頻下方。',
+            message: '按下按鈕即可進行音頻下載。'
+        }
     })
 }
 

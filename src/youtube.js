@@ -5,31 +5,49 @@ const regVid = /https:\/\/www\.youtube\.com\/watch\?v=(?<id>[^&]+)/g
 
 const mp3Api = 'https://ytapivmp3.com/api/button/mp3/'
 
+let ytDownloading = false
+
+const audioMap = {}
+
 async function downloadMp3(){
-    const vid = regVid.exec(location.href).groups?.id
+    console.debug(`scanning ${location.href}`)
+    const vid = regVid.exec(location.href)?.groups?.id
+    regVid.lastIndex = 0
     if(!vid) {
+      console.warn('vid unknown')
       throw new Error('not a valid youtube video id')
     }
     console.debug(`video id is ${vid}`)
-    const res = await fetch(mp3Api.concat(vid))
-    const html = await res.text()
-    const doc = new DOMParser().parseFromString(html, "text/html")
-    const list = doc.getElementsByClassName('download flex flex-wrap sm:inline-flex text-center items-center justify-center')
-    const audio_url = list[0].childNodes[1].href
-    if(!audio_url || audio_url.length == 0 || audio_url === null) {
-      alert('無法下載此視頻的音頻')
-      throw new Error('url is unknown, cannot download music')
+    let audio_url;
+    if (audioMap[vid] == undefined) {
+      console.debug('cannot find download link in cache, fetching...')
+      const res = await fetch(mp3Api.concat(vid))
+      const html = await res.text()
+      const doc = new DOMParser().parseFromString(html, "text/html")
+      const list = doc.getElementsByClassName('download flex flex-wrap sm:inline-flex text-center items-center justify-center')
+      const url = list[0].childNodes[1].href
+      if(!url || url.length == 0 || url === null) {
+        alert('無法下載此視頻的音頻')
+        throw new Error('url is unknown, cannot download music')
+      }
+      audio_url = url
+      audioMap[vid] = url
+    }else{
+      audio_url = audioMap[vid]
     }
     const title = $('h1.title.style-scope.ytd-video-primary-info-renderer')[0].childNodes[0].innerText
     console.log(`title: ${title}`)
-    await download({
-      audio_url,
-      title: title || vid,
-      format: 'mp3'
+    /*
+    browser.runtime.sendMessage({
+      command: 'tab',
+      data: {
+        url: audio_url
+      }
     })
+    */
+    await download({audio_url, title, format: 'mp3'})
+    console.log('download completed.')
 }
-
-let downloading = false
 
 function process() {
     if (!location.pathname.startsWith('/watch')) {
@@ -59,17 +77,22 @@ function process() {
     </a>
     `)
     $('#download-mp3').on('click', e => {
-      if(downloading) return
+      e.preventDefault()
+      if(ytDownloading) return
+      console.log('downloading music...')
       e.currentTarget.innerText = '下載中...'
-      downloading = true
-      downloadMp3().catch(console.warn).finally(() => {
+      ytDownloading = true
+      downloadMp3().catch(err => console.warn(err.message)).finally(() => {
+        ytDownloading = false
         e.currentTarget.innerText = '下載音頻'
-        downloading = false
       })
     })
     browser.runtime.sendMessage({
-      title: '音頻按鈕已出現在視頻下方。',
-      message: '按下按鈕即可進行音頻下載。'
+      command: 'notify',
+      data: {
+        title: '音頻按鈕已出現在視頻下方。',
+        message: '按下按鈕即可進行音頻下載。'
+      }
     })
 }
 
