@@ -2,7 +2,7 @@
 
     "manifest_version": 2,
     "name": "audio download button",
-    "version": "0.0.2",
+    "version": "0.0.3",
   
     "description": "Mp3 download button for youtube and bilibili",
     "author": "Eric Lam",

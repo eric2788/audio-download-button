@@ -1,6 +1,6 @@
 {
   "name": "audio-download-btn",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "mp3 download button for youtube and bilibili",
   "main": "src/index.js",
   "scripts": {
