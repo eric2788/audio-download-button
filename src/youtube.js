@@ -3,7 +3,7 @@ import download from './utils'
 
 const regVid = /https:\/\/www\.youtube\.com\/watch\?v=(?<id>[^&]+)/g
 
-const mp3Api = 'https://ytapivmp3.com/api/button/mp3/'
+const mp3Api = 'https://www.320youtube.com/v16/watch?v='
 
 let ytDownloading = false
 
@@ -24,8 +24,8 @@ async function downloadMp3(){
       const res = await fetch(mp3Api.concat(vid))
       const html = await res.text()
       const doc = new DOMParser().parseFromString(html, "text/html")
-      const list = doc.getElementsByClassName('download flex flex-wrap sm:inline-flex text-center items-center justify-center')
-      const url = list[0].childNodes[1].href
+      const btn = $(doc).find('#download .btn.btn-success.btn-lg')
+      const url = btn.attr('href')
       if(!url || url.length == 0 || url === null) {
         alert('無法下載此視頻的音頻')
         throw new Error('url is unknown, cannot download music')
@@ -37,14 +37,6 @@ async function downloadMp3(){
     }
     const title = $('h1.title.style-scope.ytd-video-primary-info-renderer')[0].childNodes[0].innerText
     console.log(`title: ${title}`)
-    /*
-    browser.runtime.sendMessage({
-      command: 'tab',
-      data: {
-        url: audio_url
-      }
-    })
-    */
     await download({audio_url, title, format: 'mp3'})
     console.log('download completed.')
 }

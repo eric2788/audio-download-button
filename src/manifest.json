@@ -2,7 +2,7 @@
 
     "manifest_version": 2,
     "name": "audio download button",
-    "version": "0.0.3",
+    "version": "0.0.4",
   
     "description": "Mp3 download button for youtube and bilibili",
     "author": "Eric Lam",
@@ -13,13 +13,18 @@
     "icons": {
       "48": "icons/icon.png"
     },
+    "applications": {
+      "gecko": {
+        "id": "{30a54ad1-61cb-4333-a9c2-8b44b1066f7d}",
+        "strict_min_version": "42.0"
+      }
+    },
 
     "permissions": [
       "webRequest",
       "<all_urls>",
       "storage",
-      "notifications",
-      "tabs"
+      "notifications"
     ],
 
     "content_scripts": [
